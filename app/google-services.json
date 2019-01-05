@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "93351624742",
+    "firebase_url": "https://sushi-a4a0f.firebaseio.com",
+    "project_id": "sushi-a4a0f",
+    "storage_bucket": "sushi-a4a0f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93351624742:android:5715bb95871805b4",
+        "android_client_info": {
+          "package_name": "com.example.dudas.sushi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93351624742-ur6lnoonm242hnokr909diocrln54u6r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dudas.sushi",
+            "certificate_hash": "833d2ee3c4c60d86dae786338812638580b8c028"
+          }
+        },
+        {
+          "client_id": "93351624742-3618hg3f4727fuqbq21svhh7i4869q7n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7163c9olVxnHgYNPl0rnVtzJesB6FGwg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93351624742-3618hg3f4727fuqbq21svhh7i4869q7n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
