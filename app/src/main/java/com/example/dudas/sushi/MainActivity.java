@@ -23,6 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,23 +38,45 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+
+
 
         recyclerView = (RecyclerView) findViewById(R.id.myRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<Profile>();
 
 
-        reference = FirebaseDatabase.getInstance().getReference().child("Profiles");
+        reference = FirebaseDatabase.getInstance().getReference().child("sushi");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
                 {
-                    Profile p = dataSnapshot1.getValue(Profile.class);
-                    list.add(p);
+                    /* Profile p = dataSnapshot1.getValue(Profile.class);
+                    list.add(p); */
+                    collectPhoneNumbers((Map<String,Object>) dataSnapshot.getValue());
                 }
                 adapter = new MyAdapter(MainActivity.this,list);
                 recyclerView.setAdapter(adapter);
+            }
+
+            private void collectPhoneNumbers(Map<String,Object> sushi) {
+
+                ArrayList<Long> phoneNumbers = new ArrayList<>();
+
+                //iterate through each user, ignoring their UID
+                for (Map.Entry<String, Object> entry : sushi.entrySet()){
+
+                    //Get user map
+                    //Map singleUser = (Map) entry.getValue();
+                    String nazwa = entry.getValue("nazwa");
+                    //Get phone field and append to list
+                    phoneNumbers.add((Long) nazwa.get("name"));
+                }
+
+                System.out.println(phoneNumbers.toString());
             }
 
             @Override
