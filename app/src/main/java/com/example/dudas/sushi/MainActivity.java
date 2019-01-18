@@ -44,10 +44,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
+
 
         recyclerView = (RecyclerView) findViewById(R.id.myRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                 //  Sushi sushi = dataSnapshot.getValue();
                   //  list.add(sushi)
@@ -69,6 +72,18 @@ public class MainActivity extends AppCompatActivity {
                     adapter = new MyAdapter(MainActivity.this, list);
                     recyclerView.setAdapter(adapter);
                 }
+
+        /*
+                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                {
+                    Profile p = dataSnapshot1.getValue(Profile.class);
+                    list.add(p);
+                    collectPhoneNumbers((Map<String,Object>) dataSnapshot.getValue());
+                } */
+             //   Log.d("Produkty1111",list+"");
+                adapter = new MyAdapter(MainActivity.this,list);
+                recyclerView.setAdapter(adapter);
+
             }
 
 
@@ -82,8 +97,14 @@ public class MainActivity extends AppCompatActivity {
 
                     //Get user map
                     Map singleUser = (Map) entry.getValue();
+<<<<<<< HEAD
                     //Get phone field and append to list
                     phoneNumbers.add((String) singleUser.get("nazwa"));
+
+=======
+                    //String nazwa = entry.getValue("nazwa");
+                    //Get phone field and append to list
+                    phoneNumbers.add((Long) singleUser.get("nazwa"));
 
                 }
 
