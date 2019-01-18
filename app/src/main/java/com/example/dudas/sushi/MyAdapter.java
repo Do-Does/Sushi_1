@@ -27,12 +27,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.cardview,parent,false));
     }
-
+   // String cenaString = Integer.toString(profiles.get(int position).getCena);
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.nazwa.setText(profiles.get(position).getNazwa());
         holder.opis.setText(profiles.get(position).getOpis());
-        holder.cena.setText(profiles.get(position).getCena());
+        holder.cena.setText(String.valueOf(profiles.get(position).getCena()));
     }
 
     @Override

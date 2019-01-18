@@ -3,13 +3,13 @@ package com.example.dudas.sushi;
 public class Profile {
     private String nazwa;
     private String opis;
-    private String cena;
+    private Long cena;
     private boolean permission;
 
     public Profile() {
     }
 
-    public Profile(String nazwa, String opis, String cena, boolean permission) {
+    public Profile(String nazwa, String opis, Long cena, boolean permission) {
         this.nazwa = nazwa;
         this.opis = opis;
         this.cena = cena;
@@ -32,11 +32,11 @@ public class Profile {
         this.opis = opis;
     }
 
-    public String getCena() {
+    public Long getCena() {
         return cena;
     }
 
-    public void setCena(String cena) {
+    public void setCena(Long cena) {
         this.cena = cena;
     }
 
