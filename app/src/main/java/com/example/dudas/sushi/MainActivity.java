@@ -38,26 +38,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-
-
-
         recyclerView = (RecyclerView) findViewById(R.id.myRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<Profile>();
 
 
         reference = FirebaseDatabase.getInstance().getReference().child("sushi");
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
                 {
-                    /* Profile p = dataSnapshot1.getValue(Profile.class);
-                    list.add(p); */
+                    /*Profile p = dataSnapshot1.getValue(Profile.class);
+                    list.add(p);*/
                     collectPhoneNumbers((Map<String,Object>) dataSnapshot.getValue());
                 }
+                Log.d("Produkty1111",list+"");
                 adapter = new MyAdapter(MainActivity.this,list);
                 recyclerView.setAdapter(adapter);
             }
@@ -70,10 +67,10 @@ public class MainActivity extends AppCompatActivity {
                 for (Map.Entry<String, Object> entry : sushi.entrySet()){
 
                     //Get user map
-                    //Map singleUser = (Map) entry.getValue();
-                    String nazwa = entry.getValue("nazwa");
+                    Map singleUser = (Map) entry.getValue();
+                    //String nazwa = entry.getValue("nazwa");
                     //Get phone field and append to list
-                    phoneNumbers.add((Long) nazwa.get("name"));
+                    phoneNumbers.add((Long) singleUser.get("nazwa"));
                 }
 
                 System.out.println(phoneNumbers.toString());
