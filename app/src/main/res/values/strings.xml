@@ -3,4 +3,7 @@
     <string name="nazwa">nazwa: </string>
     <string name="opis">opis: </string>
     <string name="cena">cena: </string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="action_settings">Settings</string>
 </resources>

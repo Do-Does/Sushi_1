@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FirebaseApp.initializeApp(this);
-        mAuth = FirebaseAuth.getInstance();
+            mAuth = FirebaseAuth.getInstance();
 
         // Views
         mEmailField = findViewById(R.id.fieldEmail);
@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         updateUI(currentUser);
     }
     // [END on_start_check_user]
+
+
     private void createAccount(String email, String password) {
         Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
@@ -90,14 +92,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-     //                       if(checkIfEmailVerified()){
-                                updateUI(user);
-                                goToHome();
-                //            } else {
-                  //              Toast.makeText(MainActivity.this, "Confirmation email was sent. Please activate your account.",
-                    //                    Toast.LENGTH_LONG).show();
-                      //          sendEmailVerification();
-                        //    }
+//                            if(checkIfEmailVerified()){
+                            updateUI(user);
+                            goToHome();
+//                            } else {
+//                                Toast.makeText(LoginActivity.this, "Confirmation email was sent. Please activate your account.",
+//                                        Toast.LENGTH_LONG).show();
+//                                sendEmailVerification();
+//                            }
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -129,15 +131,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
- //                           if (checkIfEmailVerified()) {
-                                updateUI(user);
-                                goToHome();
-   //                         } else {
-     //                           Toast.makeText(MainActivity.this, "Confirm your email." +
-       //                                         " It was sent again.",
-         //                               Toast.LENGTH_LONG).show();
-           //                     sendEmailVerification();
-             //               }
+//                            if (checkIfEmailVerified()) {
+                            updateUI(user);
+                            goToHome();
+//                            } else {
+//                                Toast.makeText(LoginActivity.this, "Confirm your email." +
+//                                                " It was sent again.",
+//                                        Toast.LENGTH_LONG).show();
+//                                sendEmailVerification();
+//                            }
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -198,20 +200,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean checkIfEmailVerified() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-       /* if (user != null) {
-            if (user.isEmailVerified()) {
-                // user is verified, so you can finish this activity or send user to activity which you want.
-                finish();
-                Toast.makeText(MainActivity.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-                return true;
-            } else {
-                // email is not verified, so just prompt the message to the user and restart this activity.
-                // NOTE: don't forget to log out the user.
-                FirebaseAuth.getInstance().signOut();
-                return false;
-                //restart this activity
-            }
-        } */
+//        if (user != null) {
+//            if (user.isEmailVerified()) {
+//                // user is verified, so you can finish this activity or send user to activity which you want.
+//                finish();
+//                Toast.makeText(LoginActivity.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+//                return true;
+//            } else {
+//                // email is not verified, so just prompt the message to the user and restart this activity.
+//                // NOTE: don't forget to log out the user.
+//                FirebaseAuth.getInstance().signOut();
+//                return false;
+//                //restart this activity
+//            }
+//        }
         return true;
     }
 
@@ -257,11 +259,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.emailCreateAccountButton) {
+            Log.d(TAG, "onClick:success");
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
         } else if (i == R.id.emailSignInButton) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
         }
     }
-
 }
-
